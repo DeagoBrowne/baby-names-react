@@ -4,11 +4,12 @@
   border-width: 10px;
   border-color: dimgrey;
   padding: 15px;
+  margin: 5px;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: auto;
 }
 
-.search {
+.searchComponent {
   display: flex;
   justify-content: center;
   margin: 5px;

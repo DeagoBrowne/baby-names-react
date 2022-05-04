@@ -1,7 +1,7 @@
-import React from "react";
-
+import React, { useState } from "react";
 
 const PageLayout = ({ babyNames }) => {
+
 
   const fColor = {
     backgroundColor: 'gold'
@@ -9,6 +9,26 @@ const PageLayout = ({ babyNames }) => {
   const mColor = {
     backgroundColor: 'black',
     color: 'gold'
+  }
+
+  const [search, setSearch] = useState('')
+
+  const [filteredNames, setFilteredNames] = useState(babyNames)
+
+  const filter = (e) => {
+
+    const keyword = e.target.value;
+
+    if (keyword !== '') {
+      const results = babyNames.filter((baby) => {
+        return baby.name.toLowerCase().startsWith(keyword.toLowerCase())
+      });
+      setFilteredNames(results);
+    } else {
+      setFilteredNames(babyNames);
+    }
+
+    setSearch(keyword)
   }
 
   babyNames.sort((a, b) => {
@@ -21,22 +41,29 @@ const PageLayout = ({ babyNames }) => {
     return 0;
   })
 
-
-
   return (
     <div>
-      <div className="search">
+      <div className="searchComponent">
         <p>Name Search</p>
-        <input className="searchbar"></input>
+        <input className="searchbar"
+          type="search"
+          value={search}
+          onChange={filter}
+          placeholder="Type name..."
+        />
       </div>
       <div className="name-selection">
-        {
-          babyNames.map((obj,) => {
+        {filteredNames && filteredNames.length > 0 ? (
+          filteredNames.map((obj) => {
             const sex = obj.sex;
             return (
-              <button key={obj.id} style={sex === "f" ? fColor : mColor}> {obj.name}</button>);
-          })
-        }
+              <button key={obj.id}
+                style={sex === "f" ? fColor : mColor}>
+                {obj.name}
+              </button>);
+          })) : (
+          <h1>No results found..</h1>
+        )}
       </div>
     </div >
   )
