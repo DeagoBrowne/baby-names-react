@@ -25,13 +25,19 @@ const PageLayout = ({ babyNames }) => {
 
   return (
     <div>
-      {
-        babyNames.map((obj,) => {
-          const sex = obj.sex;
-          return (
-            <button key={obj.id} style={sex === "f" ? fColor : mColor}> {obj.name}</button>);
-        })
-      }
+      <div className="search">
+        <p>Name Search</p>
+        <input className="searchbar"></input>
+      </div>
+      <div className="name-selection">
+        {
+          babyNames.map((obj,) => {
+            const sex = obj.sex;
+            return (
+              <button key={obj.id} style={sex === "f" ? fColor : mColor}> {obj.name}</button>);
+          })
+        }
+      </div>
     </div >
   )
 }

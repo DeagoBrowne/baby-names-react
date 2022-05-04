@@ -1,0 +1,31 @@
+.name-selection {
+  display: grid;
+  border-style: ridge;
+  border-width: 10px;
+  border-color: dimgrey;
+  padding: 15px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: auto;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.searchbar {
+  border-width: 2px;
+  border-style: dotted;
+  border-color: black;
+  margin-top: 10px;
+  margin-left: 5px;
+  height: 20px;
+}
+
+button {
+  font-weight: 800;
+  height: 30px;
+  margin: 1.5px;
+  border-radius: 50%;
+}
